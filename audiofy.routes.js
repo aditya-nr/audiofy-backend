@@ -14,10 +14,10 @@ const router = express.Router();
 
 router.post('/register', registerController);
 router.post('/login', loginController);
-router.post('/add-audio', authMiddleware, addAudioController);
-router.post('/create-playlist', authMiddleware, createPlaylistController);
-router.put('/update-playlist', authMiddleware, updatePlaylistController);
-router.post('/get-presigned-url', authMiddleware, getPresignedUrlController);
-router.post('/process-url', authMiddleware, downloadUploadAudioController);
+router.post('/add-audio', addAudioController);
+router.post('/create-playlist', createPlaylistController);
+router.put('/update-playlist', updatePlaylistController);
+router.post('/get-presigned-url', getPresignedUrlController);
+router.post('/download-upload-audio', downloadUploadAudioController);
 
 export default router;

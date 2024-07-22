@@ -1,6 +1,8 @@
 import { FileServie } from "../services/file.service.js";
 import { env } from '../constants.js';
+import { logme } from "../services/logs.service.js";
 const getPresignedUrlController = async (req, res) => {
+    logme(req);
     const { extension, mimeType } = req.body;
 
     if (!extension || !mimeType) {

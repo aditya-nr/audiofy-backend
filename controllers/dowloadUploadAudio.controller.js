@@ -16,7 +16,6 @@ const downloadUploadAudioController = async (req, res) => {
 
     const outputFileName = `${Date.now()}.mp3`;
     const outputFilePath = path.resolve('downloads', outputFileName);
-
     try {
         // Step 1: Download the audio using yt-dlp
         await new Promise((resolve, reject) => {
@@ -30,7 +29,12 @@ const downloadUploadAudioController = async (req, res) => {
                 }
             });
         });
+    } catch (error) {
+        console.error(`Error: ${error.message}`);
+        res.status(500).json({ status: 'error', message: `Unavilable to download` });
+    }
 
+    try {
         // Step 2: Upload the audio to AWS S3
         const fileStream = await fs.readFile(outputFilePath);
         const params = {
